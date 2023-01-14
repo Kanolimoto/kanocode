@@ -1,0 +1,193 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2021/03/01, 16:52:29
+    Author     : 59754
+*/
+
+h1,a,p,h2{
+    font-family: "Source Sans Pro", sans-serif;
+    margin: 0px;
+}
+section.special, article.special {
+    text-align: center;
+}
+a {
+    -moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+    -webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+    -ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+   
+    color: #e89980;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom-color: transparent;
+}
+body{
+    background-color: #f5f5f5;
+    margin: 0px;
+     z-index: 0;
+}
+.header{
+    
+    right: 0px;
+    position: absolute;
+    padding: 0px;
+    background: #648a81;
+    width: 100%;
+    height: 700px;
+    z-index: 1;
+}
+.header-div{
+    
+    right: 0px;
+    top:0px;
+    position: absolute;
+    background-image: url('../img/banner.jpg');
+    z-index: -1;
+    width: 100%;
+    height:100%;
+}
+.header-div h1{
+    display: none;
+/*   visibility:  hidden;*/
+    margin-top:140px;
+    font-weight: lighter;
+   font-size: 50px;
+    color: white;
+}
+.header-div h2{
+    display: none;
+    margin-top: 0px;
+    font-weight: lighter;
+   font-size: 25px;
+    color: white;
+}
+.header-div h3{
+    margin-top: 40px;
+    font-weight: lighter;
+   font-size: 50px;
+    color: white;
+}
+
+
+
+.head{
+    
+    
+    color: #f1f1f1;
+    cursor: default;
+    
+    left: 0;
+    line-height: 60px;
+    
+    top: 0;
+    width: 100%;
+    
+}
+.head ul {
+      height: inherit;
+    line-height: inherit;
+    position: absolute;
+    right: 0.75em;
+    top: 0;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.head ul >li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.head li >a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 2px 3px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover, .dropbtn {
+    background-color: #e5e5e5;
+}
+
+.active{
+     border-radius: 5px;
+     -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+.active:hover{
+    color: #999999;
+    
+}
+.button {
+    
+    -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    border-radius: 5px;
+    padding: 10px 45px;
+    background-color: transparent;
+    box-shadow: inset 0 0 0 2px #ffffff;
+    color: #fff;
+}
+ .button:hover {
+    background-color: #999;
+}
+ .button:active {
+    background-color: rgba(153, 153, 153, 0.5);
+}
+.primary{
+    background-color: white;
+    color: #3d4b52;
+}
+
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+   
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    border-bottom-width: 1px;
+    border-bottom-color: #999999;
+    border-bottom: solid;
+    color: #3d4b52;
+     display:block;
+    height: 2em;
+    line-height: 1.95em;
+    padding: 0 1em;
+    
+    
+}
+
+
+.dropdown-content a:hover {background-color: #595959;color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.he-button{
+   display: none;
+    margin-top: 80px;
+    margin-left: 46%;
+    font-size: 25px;
+}

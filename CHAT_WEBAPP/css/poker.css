@@ -1,0 +1,241 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2022年2月22日, 上午9:19:43
+    Author     : 59754
+*/
+
+div#player1{
+   margin-left: 70px;
+    width: 1200px;
+    height: 70px;
+    margin-bottom: -100px;
+}
+div#player3 {
+    margin-left: 100px;
+    margin-top: -80px;
+    width: 1200px;
+    height: 70px;
+}
+ div#player2 {
+    margin-top: -400px;
+    width: 170px;
+    height: 300px;
+    margin-left: 100px;
+    float: left;
+}
+div#player2 {
+    margin-right: 10px;
+    float: right;
+}
+div#footer, div#compeleteCards {
+    clear: both;
+    text-align: center;
+    margin-top: 30px;
+    
+}
+#create,#sort,#deal,#index,#index3,#index1,#index4{
+    border: 1px solid green;
+    margin-left: 30px;
+     background-color: #4CAF50; /* Green */
+   
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    float: left;
+}
+.center {
+    height: 460px;
+}
+.cards {
+    /*桌面牌*/
+     color: black;
+    border-style:double;
+    width: 50px;
+    height: 80px;
+    border: solid 0.5px black;
+    margin-left: 3px;
+    float: left;
+    -webkit-user-select: none;
+    box-shadow: 5px 5px 2px #000000;
+    border-radius: 2px;
+    background-color: white;
+    
+}
+.card {
+    color: black;
+     margin-top: 30px;
+    border-style:double;
+    width: 50px;
+    height: 80px;
+    border: solid 0.5px black;
+    margin-left: 3px;
+    float: left;
+    -webkit-user-select: none;
+    box-shadow: 5px 5px 2px #000000;
+    border-radius: 2px;
+    background-color: white;
+    z-index: 10;
+}
+.card1 {
+   /*右手玩家*/
+   color: black;
+   width: 80px;
+    height:50px;
+    border: solid 0.5px black;
+    margin-left: 3px;
+    float: left;
+    -webkit-user-select: none;
+    box-shadow: 5px 5px 2px #000000;
+    border-radius: 2px;
+    background-color: white;
+    
+   
+}
+.card3 {
+    /*完牌提示指针*/
+    width: 80px;
+    height: 40px;
+    border: solid 0.5px black;
+    margin-left: 3px;
+    float: left;
+    -webkit-user-select: none;
+    box-shadow: 5px 5px 2px #888888;
+    border-radius: 2px;
+   background-color: white;
+}
+.desk {
+    margin-top: 200px;
+    align-content: center ;
+    width: 600px;
+    height: 300px;
+    border: solid 0.5px black;
+    margin-left: 500px;
+    background-color: #1abc9c;
+    -webkit-user-select: none;
+}
+.number {
+    text-align: center;
+    font-size: 22px;
+    margin-top: 11px;
+}
+.com{
+    margin-top: 30px;
+   text-align: center;
+    
+}
+.b{
+    font-size: 25px;
+}
+
+
+#create:hover,#sort:hover,#deal:hover,#index:hover,#index3:hover,#index1:hover,#index4:hover {
+    background-color: #3e8e41;
+}
+.card:link {background-color: #ddd;}      
+.card:visited {background-color: #1abc9c;}  
+.card:hover {background-color: #ddd;} 
+.card:active {background-color: #ddd;}  
+
+.win{
+    width: 300px;
+    height: 300px;
+    background-color: #1abc9c;
+        float: left;
+    
+    
+    
+}
+
+@keyframes myfirst
+{
+    from {background: red;}
+    to {background: yellow;}
+}
+ 
+@-webkit-keyframes myfirst /* Safari 与 Chrome */
+{
+    from {background: red;}
+    to {background: yellow;}
+}
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+.overlay h1{
+   padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s; 
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+div#PP {
+    position: absolute;
+    margin-top: 135px;
+    height: 300px;
+    width: 400px;
+    background-color: bisque;
+    left: 3%;
+    top: 10%;
+}
+
+

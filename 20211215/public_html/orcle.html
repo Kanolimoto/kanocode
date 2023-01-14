@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+    <style>
+    .divbox{ width:1150px; height:400px; overflow:auto;}
+    .textarea-inherit {
+        width: 100%;
+        overflow: auto;
+        word-break: break-all; //解决兼容问题
+    }
+    /* Full-width input fields*/
+    .inputclass[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 5px 5px;
+        margin: 5px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+        position: relative;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+        border: 1px solid #888;
+        width: 50%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button (x) */
+    .close {
+        position: absolute;
+        right: 25px;
+        top: 0;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+    /* Add Zoom Animation */
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+
+    @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)}
+        to {-webkit-transform: scale(1)}
+    }
+
+    @keyframes animatezoom {
+        from {transform: scale(0)}
+        to {transform: scale(1)}
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+    }
+</style>
+    <style type="text/css">
+        .pointer{
+            cursor:pointer;
+        }
+        .txtu{
+                text-decoration: underline
+            }
+
+    </style>
+<script type="text/javascript">
+    function loadXMLDoc()
+{var xmlhttp;
+var ht="0";
+var userAgent = navigator.userAgent;
+var isOpera = userAgent.indexOf("Opera") > -1;
+var htall=document.getElementsByName("ht");
+for (var i=0;i<htall.length;i++){
+        if (htall[i].checked) {
+        ht = htall[i].value;
+        break;
+    }
+}
+var sql=document.getElementById("sql").value;
+var kw=document.getElementById("keyw").value;
+var str="ht="+ht+"&sql="+sql+"&kw="+kw;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+        //var jsonObj = {"55":"1","70":"0","80":"2","60":"2"};
+        //for (var prop in jsonObj)
+        //{
+        //alert("jsonObj[" + prop + "]=" + jsonObj[prop]);
+        //}
+        var title="<tr>";
+        var body="";
+        document.getElementById("table1").innerHTML="";
+        var alldata=eval ("(" + xmlhttp.responseText + ")");
+        document.getElementById("maxnum").innerHTML=alldata.maxnum;
+	    document.getElementById("pagenum").innerHTML=alldata.pagenum;
+	    document.getElementById("pageop").innerHTML=alldata.pageop;
+	    if(alldata.userdata){
+        data=eval("("+alldata.userdata+")");
+        for (var i in data){
+            var cbody="<tr>";
+            for (var j in data[i]){
+                if(i==0){
+                    title=title+"<td align='center' width='501'>"+"<span style='font-weight:700'>"+data[i][j]+"</span>"+"</td>";
+                }
+                else{
+                cbody=cbody+"<td align='center'>"+data[i][j]+"</td>";}
+            }
+            cbody=cbody+"</tr>";
+            body=body+cbody;
+        }
+        var alltitle=title+"</tr>";
+        var htm=alltitle+body;
+        document.getElementById("table1").innerHTML=htm;}
+        else{
+             document.getElementById("table1").innerHTML="未查到数据";}
+
+        //if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera){
+            //document.getElementById("table1").innerHTML=htm;
+            //document.getElementById("maxnum").innerHTML=alldata.maxnum;
+            //document.getElementById("myDiv").innerText='';
+	//}
+	    //else{
+	            //document.getElementById("table1").innerHTML=htm;
+	            //document.getElementById("maxnum").innerHTML=alldata.maxnum;
+	            //document.getElementById("myDiv").innerText='';
+            //}
+    }
+  }
+    document.getElementById("nowpage").innerHTML="1";
+    document.getElementById("table1").innerHTML="查询中...";
+    xmlhttp.open("POST","/orclecx",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(str);
+}
+    function loadXMLDoc1()
+{var xmlhttp;
+var ht="0";
+var userAgent = navigator.userAgent;
+var isOpera = userAgent.indexOf("Opera") > -1;
+var htall=document.getElementsByName("ht");
+for (var i=0;i<htall.length;i++){
+        if (htall[i].checked) {
+        ht = htall[i].value;
+        break;
+    }
+}
+var sql=document.getElementById("sql").value;
+var kw=document.getElementById("keyw").value;
+var str="ht="+ht+"&sql="+sql+"&kw="+kw;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+      document.getElementById("table1").innerHTML="删除完毕...";
+  }
+
+  }
+    document.getElementById("nowpage").innerHTML="1";
+    document.getElementById("table1").innerHTML="删除中...";
+    xmlhttp.open("POST","/orclecx1",true);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(str);
+}
+function loadXMLDoc_back()
+{var xmlhttp;
+var ht="0";
+var userAgent = navigator.userAgent;
+var isOpera = userAgent.indexOf("Opera") > -1;
+var htall=document.getElementsByName("ht");
+for (var i=0;i<htall.length;i++){
+        if (htall[i].checked) {
+        ht = htall[i].value;
+        break;
+    }
+}
+var sql=document.getElementById("sql").value;
+var str="ht="+ht+"&sql="+sql;
+if (window.XMLHttpRequest)
+  {// code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {// code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+        	if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera){
+ 	        document.getElementById("myDiv").value=xmlhttp.responseText;
+	}
+	else{
+        	    document.getElementById("myDiv").value=xmlhttp.responseText;
+            }
+
+    }
+  }
+  document.getElementById("myDiv").value='查询中...';
+  xmlhttp.open("POST","/orclecx",true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  xmlhttp.send(str);
+}
+function radiof(obj) {
+        var value=obj.getAttribute("value");
+        var sql=document.getElementById("sql");
+        sql.value=value;
+}
+</script>
+    <title>oracle数据查询</title>
+</head>
+<body onload="loadXMLDoc()">
+<input type="hidden" value="{{qx}}" id="qx">
+<div id="id01" class="modal">
+    <form class="modal-content animate" action="/">
+        <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
+        </div>
+        <div class="container">
+            <label><b>用户姓名</b></label>
+            <input type="text" placeholder="请输入姓名" name="uname" id="sqlname" class="inputclass"><br>
+            <label><b>用户年龄</b></label>
+            <input type="text" placeholder="请输入年龄"  id="sqltxt" class="inputclass">
+            <!--<label><b>Password</b></label>
+             <input type="password" placeholder="Enter Password" name="psw" required>-->
+            <button type="button" onclick="mksql()">创建</button>
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">取消</button>
+            <span id="restxt"></span>
+            <!--<input type="checkbox" checked="checked"> 记住我-->
+        </div>
+       <!-- <div class="container" style="background-color:#f1f1f1">
+             点击cancel按钮，把模态框隐藏-->
+
+            <!--<span class="psw">Forgot <a href="#">password?</a></span>
+        </div>-->
+    </form>
+</div>
+<div id="id02" class="modal">
+    <form class="modal-content animate" action="/">
+        <div class="imgcontainer">
+            <!-- 点击×号，隐藏模态框-->
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">×</span>
+        </div>
+        <div class="container">
+            <label><b>sql名称</b></label>
+            <input type="hidden" id="sqlid">
+            <input type="text" placeholder="请输入sql名称" name="uname" id="sqlnamemd" class="inputclass"><br>
+            <label><b>sql语句</b></label>
+            <textarea cols="128" rows="35" placeholder="请输入sql语句" id="sqltxtmd" class="textarea-inherit"></textarea>
+            <button type="button" onclick="mdsql()">修改</button>
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">取消</button>
+            <span id="restxtmd"></span>
+        </div>
+    </form>
+</div>
+<h1 align="center">数据查询页面</h1>
+<table width="1024" align="center">
+    <tr>
+        <td >
+            &nbsp;<input type="radio" id="104" name="ht" value="1" checked><label for="104" style="cursor:pointer">&nbsp;学生信息&nbsp;&nbsp;</label>
+            <input type="radio"  id="116" name="ht" value="2" style="visibility: hidden"><label for="116" style="visibility: hidden">&nbsp;&nbsp;&nbsp;部门信息</label>
+            <input type="radio"  id="else" name="ht" value="3" style="visibility: hidden">&nbsp;<label for="else" style="visibility: hidden">&nbsp;&nbsp;&nbsp;工资等级</label></td> </tr>
+        <tr align="right"><td>
+             <button id="mkid" onclick="document.getElementById('id01').style.display='block'" style="width:auto;visibility: hidden;" >添加常用sql语句</button>
+            <button id="mdid" onclick="modify()" style="width:auto;visibility: hidden;" >修改常用sql语句</button>
+        </td></tr>
+
+
+    <tr>
+            <td>
+<textarea id="sql" style="width:auto;visibility: hidden;"></textarea>
+        </td>
+    </tr>
+    <tr>
+    <td>
+        {% for i in sqldata %}
+        <input type="radio" id="{{i[0]}}" name="sqln" value="{{i[2]}}" onclick="radiof(this)" style="cursor:pointer" alt="{{i[1]}}"><label for="{{i[0]}}" style="cursor:pointer">&nbsp;{{i[1]}}&nbsp;&nbsp;</label>
+        {% endfor %}
+        </td>
+</tr>
+    <tr>
+    <tr>
+        <td>
+
+        </td>
+    </tr>
+        <tr>
+            <td align="right">
+               请输入姓名： <input type="text" value="" id="keyw">
+           <input type="button" value="查询" onclick="loadXMLDoc()">
+           <input type="button" value="新增" onclick="document.getElementById('id01').style.display='block'">
+
+        </td>
+    </tr>
+     <tr>
+        <td>
+            <div class="divbox">
+            <table align="left" id="table1" border="1" cellspacing="0" cellpadding="0">
+            </table>
+            </div>
+        </td>
+     </tr>
+     <tr>
+         <td>
+             <div align="left">每页<span id="pageop">0</span>条, 共<span id="maxnum">0</span>条, 共<span id="pagenum">0</span>页
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <span style="cursor: pointer" onclick="page('start')">首页</span>&nbsp;&nbsp;&nbsp;&nbsp
+             <span style="cursor: pointer" onclick="page(-1)">上一页</span>&nbsp;&nbsp
+             <span id="nowpage">1</span>&nbsp;&nbsp
+             <span style="cursor: pointer" onclick="page(1)">下一页</span>&nbsp;&nbsp;&nbsp;&nbsp
+             <span style="cursor: pointer" onclick="page('end')">末页</span>&nbsp;&nbsp;&nbsp;&nbsp
+                 <input type="button" value="删除所有数据" onclick="loadXMLDoc1()">
+             </div>
+                        <br>
+        <span id="myDiv"></span>
+         </td>
+    </tr>
+</table>
+</body>
+</html>
+<script>
+    // 获取模型            //<span style="color:blue" class="pointer" onclick="allxm('学习文档')">学习文档</span>
+    var modal = document.getElementById('id01');
+    var modal2 = document.getElementById('id02');
+    // 鼠标点击模型外区域关闭登录框
+    function mksql(){
+    var xmlhttp;
+    //var xmname= "{{path}}";
+    var sqlname=document.getElementById('sqlname').value;
+    var sqltxt=document.getElementById('sqltxt').value;
+    if (window.XMLHttpRequest)
+  {
+  xmlhttp=new XMLHttpRequest();
+  }
+else
+  {
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function()
+  {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+        var str=xmlhttp.responseText;
+        if (str=="0"){
+              setTimeout('myrefresh()', 2000);
+                window.location.reload();
+        }
+        else{
+            document.getElementById("resxm").innerHTML=str;
+        }
+    }
+  }
+    str = "sqlname=" + sqlname+"&sqltxt="+encodeURIComponent(sqltxt);
+    xmlhttp.open("POST","/mksql",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(str);
+}
+    function mdsql() {
+    var xmlhttp;
+    var sqlid=document.getElementById('sqlid').value;
+    var sqlnamemd=document.getElementById('sqlnamemd').value;
+    var sqltxtmd=document.getElementById('sqltxtmd').value;
+    if (window.XMLHttpRequest)
+    {
+    xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    str = "sqlid=" + sqlid+"&sqlnamemd="+sqlnamemd+"&sqltxtmd="+encodeURIComponent(sqltxtmd);
+    xmlhttp.open("POST","/mdsql",true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send(str);
+    xmlhttp.onreadystatechange=function(){
+   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+    {
+        var str=xmlhttp.responseText;
+        if (str=="0"){
+              setTimeout('myrefresh()', 2000);
+                window.location.reload();
+        }
+        else{
+            document.getElementById("restxtmd").innerHTML=str;
+        }
+    }
+    }}
+    function modify() {
+        var sqlid;
+        var sqlname;
+        var htall=document.getElementsByName("sqln");
+    for (var i=0;i<htall.length;i++){
+        if (htall[i].checked) {
+        sqlname = htall[i].getAttribute("alt");
+        sqlid=htall[i].getAttribute("id");
+        break;
+    }}
+    //var sqlname=document.getElementById('sql').value;
+    var sqltxt=document.getElementById('sql').value;
+    var elementtxt=document.getElementById('id02');
+    elementtxt.style.display='block';
+    document.getElementById('sqlid').value=sqlid;
+    document.getElementById('sqlnamemd').value=sqlname;
+    document.getElementById('sqltxtmd').value=sqltxt;
+
+  }
+function page(uord) {
+        if (window.XMLHttpRequest)
+        {
+  xmlhttp=new XMLHttpRequest();
+  }
+        else
+        {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        var ht="0";
+        var topage;
+        var userAgent = navigator.userAgent;
+        var htall=document.getElementsByName("ht");
+        for (var i=0;i<htall.length;i++){
+        if (htall[i].checked) {
+        ht = htall[i].value;
+        break;
+    }
+}
+        var sql=document.getElementById("sql").value;
+        var nowpage=parseInt(document.getElementById('nowpage').innerText);
+        var maxpage=document.getElementById('pagenum').innerText;
+        if (uord=="end"){
+            topage=maxpage;
+        }
+        else if(uord=="start"){
+            topage=1;
+        }
+        else{
+            topage=nowpage+uord;
+        }
+        if(topage>0&&topage<=parseInt(maxpage)){
+        document.getElementById('nowpage').innerText=topage;
+        str = "ht="+ht+"&sql="+sql+"&maxpage=" + maxpage+"&topage="+topage;
+        xmlhttp.open("POST","/oraclepage",true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(str);
+        xmlhttp.onreadystatechange=function()
+        {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+        var title="<tr>";
+        var body="";
+        document.getElementById("table1").innerHTML="";
+        var alldata=eval ("(" + xmlhttp.responseText + ")");
+        var data=eval ("(" + alldata.userdata + ")");
+        for (var i in data){
+            var cbody="<tr>";
+            for (var j in data[i]){
+                if(i==0){
+                   title=title+"<td align='center' width='501'>"+"<span style='font-weight:700'>"+data[i][j]+"</span>"+"</td>";
+                }
+                else{
+                cbody=cbody+"<td align='center'>"+data[i][j]+"</td>";
+            }}
+            cbody=cbody+"</tr>";
+            body=body+cbody;
+        }
+        var alltitle=title+"</tr>";
+        var htm=alltitle+body;
+        document.getElementById("table1").innerHTML=htm;
+    }
+        }
+        document.getElementById("table1").innerHTML="查询中...";
+        }
+        if(topage<1){
+            document.getElementById('nowpage').innerText="1";
+        }
+        if(topage>parseInt(maxpage)){
+            document.getElementById('nowpage').innerText=maxpage;
+        }
+        }
+</script>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head >
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/css1.css">
+        <link rel="stylesheet" type="text/css" href="css/css_gamepop.css">
+        <link rel="stylesheet" type="text/css" href="css/cssindex.css">
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="cloud/css/style.css">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+        <script src="js/js1.js"></script>
+        <script src="js/js_index.js"></script>
+
+
+        <script>
+           var pn;
+           var rs;
+            var name;
+            function getQueryVariable(variable)
+            {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return(false);
+            }
+            function geturl() {
+                if (name == '') {
+                    name = getQueryVariable("name");
+
+                }
+            }
+            function move() {
+                var n = document.getElementById("player");
+                n.innerHTML = name;
+            }
+            setInterval(function () {
+                move();
+                show();
+                show_tcs();
+                geturl();
+                readyshow();
+                player_num();
+                
+            }, 1000);
+            function show()
+            {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+                    xmlhttp = new XMLHttpRequest();
+                } else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        document.getElementById("p1").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "nbc.php", true);
+                xmlhttp.send();
+            }
+            function show_tcs()
+            {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+                    xmlhttp = new XMLHttpRequest();
+                } else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        document.getElementById("tcs").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "get_tcs.php", true);
+                xmlhttp.send();
+            }
+            function input()
+            {
+
+                var str;
+                str = document.getElementById('con').value;
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+                    xmlhttp = new XMLHttpRequest();
+                } else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        document.getElementById("p1").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "chat_send.php?q=" + str + "&n=" + name, true);
+                xmlhttp.send();
+            }
+
+            function inputclick()
+            {
+                if (event.keyCode == 13) {
+                    document.getElementById("bt").click();
+                }
+            }
+            function xx() {
+                document.getElementById('pok').href = 'porker.php?name=' + name;
+            }
+            function ready()
+            {
+                var btnr = document.getElementById("ready");
+                console.log(btnr);
+               btnr.style.visibility='hidden';
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+                    xmlhttp = new XMLHttpRequest();
+                } else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        
+                    }
+                }
+                xmlhttp.open("GET", "playerinsert.php?n="+name, true);
+                xmlhttp.send();
+            }
+              function readyshow()
+            {
+                var xmlhttp;
+                if (window.XMLHttpRequest)
+                {
+                    // IE7+, Firefox, Chrome, Opera, Safari 浏览器执行的代码
+                    xmlhttp = new XMLHttpRequest();
+                } else
+                {
+                    // IE6, IE5 浏览器执行代码
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function ()
+                {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                    {
+                        document.getElementById("ss").innerHTML = xmlhttp.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "getplayer.php?n="+name, true);
+                xmlhttp.send();
+            }
+            function player_num(){
+                pn= document.getElementById('ss');
+           rs=pn.childNodes.length-2;
+           console.log(rs);
+           var s=document.getElementById('ready');
+           if(rs>=3){
+              var btnr = document.getElementById("ready");
+                
+               btnr.style.visibility='hidden';
+               
+               
+           }
+           
+                
+            }
+            
+        </script>
+    </head>
+    <body onkeydown="inputclick()" >
+        <div class="sky">
+	<div class="clouds_one"></div>
+	<div class="clouds_two"></div>
+	<div class="clouds_three"></div>
+ </div>
+       
+ 
+
+        <!-- 打开弹窗按钮 -->
+        <!-- 弹窗 -->
+        <div id="myModal" class="modal">
+            <!-- 弹窗内容 -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>贪吃蛇</h2>
+                    
+                </div>
+                <div class="modal-body">
+                    <div id="pannel" style="margin-bottom: 10px;">
+                        
+                    </div>
+                    
+                    
+                    <select id="selSize">
+                        <option value="20">20*20</option>
+                        <option value="30">30*30</option>
+                        <option value="40">40*40</option>
+                    </select>
+                    <select id="selSpeed">
+                        <option value="100">速度-慢</option>
+                        <option value="50" selected="selected">速度-中</option>
+                        <option value="25">速度-快</option>
+                    </select>
+                    <input type="button" id="btnStart" value="开始" />
+                </div>
+                <div class="modal-footer">
+                    <h3>积分:<a id="Spoint">0</a>玩家:<a id="player">1</a> </h3>
+                    <div class="tcsshow">
+                    <h1>贪吃蛇游戏王者</h1>
+                    <span id="tcs"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="myModal1" class="modal">
+            <!-- 弹窗内容 -->
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>斗地主等待室</h2>
+                </div>
+                <div class="modal-body">
+                    <p>加入的其他玩家:</p>
+                    <div id="rs"><a id="ss"></a></div>
+                    <p id="readyp"><button id="ready" onclick="ready()">准备</button></p>
+                </div>
+           
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+
+            <div class="modal13">
+                <!-- 弹窗内容 -->
+                <div class="modal-content">
+
+                    <span class="close">&times;</span>
+                    
+
+
+
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+                    
+
+
+
+
+
+
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <button id="myBtn"><a href="#">贪吃蛇</a></button>
+                <button id="myBtn1"><a href="#">斗地主</a></button>
+                <a href="../MobilewebApp/index.php">微博空间</a>
+                <a href="#">Contact</a>
+            </div>
+            <div id="main">
+                <h2>游戏菜单</h2>
+                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; 打开</span>
+            </div>
+            <p id="p1"></p>
+           
+            <div class="container mt-3">
+ 
+  <form onsubmit="input();">
+    <div class="mb-3 mt-3">
+      <label for="comment">请输入内容：</label>
+      <textarea class="form-control" rows="5" id="con" name="text"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" id="bt">提交</button>
+  </form>
+             
+</div>
+          <div class="sky">
+	<div class="clouds_one"></div>
+	<div class="clouds_two"></div>
+	<div class="clouds_three"></div>
+ </div>     
+            <script src="js/js_gamepop.js"></script>
+    </body> 
+</html>

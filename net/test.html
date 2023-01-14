@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+function startTime(){
+	var today=new Date();
+	var h=today.getHours();
+	var m=today.getMinutes();
+	var s=today.getSeconds();// 在小于10的数字前加一个‘0’
+	m=checkTime(m);
+	s=checkTime(s);
+	document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+	t=setTimeout(function(){startTime()},500);
+        startYear();
+        change();
+}
+function checkTime(i){
+	if (i<10){
+		i="0" + i;
+	}
+	return i;
+}
+
+function startYear(){
+                var Year = new Date();
+                
+                
+                document.getElementById("dy").innerHTML=Year.getFullYear()+ " Year "+Year.getMonth()+" Month "+Year.getDate()+" Day";
+            }
+function change(){
+    
+    var Year = new Date();
+    var setd=document.getElementById("d");
+    var setdnum = setd.getElementsByTagName("li");
+    var setday =document.getElementById("setday");
+    var setm=document.getElementById("setm");
+    setday.innerHTML=Year.getFullYear();
+    var da =Year.getDate();
+    var Month=new Array("January",
+"February",
+"March",
+"April",
+"May",
+"June",
+"July",
+"August",
+"September",
+"October",
+"November",
+"December");
+
+for(var i=0;i<Month.length;i++){
+    
+    if(parseInt(Year.getMonth())===i){
+        
+        setm .innerHTML=Month[i];
+    }
+  for(var j=1;j<=setdnum.length;j++){
+      if(da===j+1){
+         var span=setdnum[j].getElementsByTagName("span");
+                 span[0].className="active";
+                 
+          
+      }
+  }
+}
+    
+    
+   
+}
+        </script>
+        <style>
+            
+            * {box-sizing:border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana,sans-serif;}
+
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+}
+
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+}
+
+.days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color: #777;
+}
+
+.days li .active {
+    padding: 5px;
+    background:#1abc9c;
+    color:#ffffff;
+    
+}
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+    .weekdays li, .days li {width: 12.5%;}
+    .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+    .weekdays li, .days li {width: 12.2%;}
+}
+.time{
+    width: 600px;
+    height: 200px;
+    
+    color: white;
+    text-align: center;
+    padding: auto;
+    
+}
+body{
+    background-color: #666666;
+}
+               
+        </style>
+    </head>
+    <body onload="startTime()">
+        <div class="time">
+            <div style=" font-size: 100px;" id="txt"></div>
+            <div id="dy"></div>   
+        </div>
+        <hr>
+        <h1>CSS 日历</h1>
+
+<div class="month">      
+  <ul>
+    <li class="prev">❮</li>
+    <li class="next">❯</li>
+    <li style="text-align:center">
+        <a id="setm">August</a><br>
+      <span style="font-size:18px"><a id="setday">2016</a></span>
+    </li>
+  </ul>
+</div>
+
+<ul  class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+        <ul class="days" id="d">  
+            <li><span>1</span></li>
+  <li><span>2</span></li>
+  <li><span>3</span></li>
+  <li><span>4</span></li>
+  <li><span>5</span></li>
+  <li><span>6</span></li>
+  <li><span>7</span></li>
+  <li><span>8</span></li>
+  <li><span>9</span></li>
+  <li><span>10</span></li>
+  <li><span>11</span></li>
+  <li><span>12</span></li>
+  <li><span>13</span></li>
+  <li><span>14</span></li>
+  <li><span>15</span></li>
+  <li><span>16</span></li>
+  <li><span>17</span></li>
+  <li><span>18</span></li>
+  <li><span>19</span></li>
+  <li><span>20</span></li>
+  <li><span>21</span></li>
+  <li><span>22</span></li>
+  <li><span>23</span></li>
+  <li><span>24</span></li>
+  <li><span>25</span></li>
+  <li><span>26</span></li>
+  <li><span>27</span></li>
+  <li><span>28</span></li>
+  <li><span>29</span></li>
+  <li><span>30</span></li>
+  <li><span>31</span></li>
+  
+  
+</ul>
+        
+    </body>
+</html>

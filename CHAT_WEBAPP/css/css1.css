@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2022年2月18日, 下午8:24:02
+    Author     : 59754
+*/
+#pannel table {
+border-collapse: collapse;
+}
+#pannel table td {
+border: 1px solid #808080;
+width: 10px;
+height: 10px;
+font-size: 0;
+line-height: 0;
+overflow: hidden;
+}
+#pannel table .snake {
+background-color: green;
+}
+#pannel table .food {
+background-color: blue;
+}
+

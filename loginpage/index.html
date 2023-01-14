@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>The dataBase</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body{
+                background-color: #009999;
+            }
+            .regester{
+                border-radius: 25px;
+                height: 300px;
+                width: 500px;
+                background-color: white;
+                border:  antiquewhite;
+               margin-top: 100px;
+               margin-left: 100px;
+            }
+            .input1{
+                height: 20px;
+                width: 200px;
+                margin-top: 70px;
+                margin-left: 30px;
+                 font-size: 16px;
+            }
+            .input2{
+                height: 20px;
+                width: 200px;
+                margin-top: 50px;
+                margin-left: 30px;
+                 font-size: 16px;
+            }
+            .button1{
+                width: 300px;
+                
+                background-color: #ccccff;
+                
+                margin: 20px;
+                margin-left: 100px;
+                margin-top: 50px;
+                
+                 font-size: 20px;
+                 cursor: pointer;
+                
+            }
+            .button2:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}           
+a{
+    font-size: 20px;
+     margin-left: 80px;
+    
+}
+        </style>
+    </head>
+    <body>
+        <div class="regester">
+            <form action="requireweb.php" method="post">
+                <a>user name</a><input class="input1" type="text" name="name"><br>
+            <a>passwords</a><input class="input2" type="password" name="passwords">
+            <input class="button1 button2" type="submit" value="Submit">
+            </form>
+            
+        </div>
+    </body>
+</html>

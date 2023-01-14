@@ -1,0 +1,122 @@
+/*----------------------
+基本設定
+----------------------*/
+*{
+margin: 0;
+padding: 0;
+}
+
+img{ 
+		border: 0;
+	}
+	
+ul{list-style: none;
+	}
+	
+a{text-decoration: none;
+	}
+	
+address{font-style: normal;
+	}	
+
+
+	
+#container{
+		width: 900px;
+		margin: 0 auto;
+		overflow: hidden;
+}
+
+div{
+
+overflow: hidden;
+}
+
+/*----------------------
+ヘッダー
+----------------------*/
+#header{
+	width: 900px;	
+}
+
+/*----------------------
+グローバルナビ
+----------------------*/
+
+#global_navi{
+	width: 900px;
+	height: 60px;
+}
+#global_navi ul li{
+	float: left;
+}
+
+/*----------------------
+メインビジュアル
+----------------------*/
+#main_visual{
+	width: 900px;
+}
+
+/*----------------------
+メインコンテンツ
+----------------------*/
+
+
+#main_cont{
+	width: 600px;
+	height: 250px;
+	float:left;
+	}
+#main_cont h5{
+	width: 280px;
+	height: 50px;
+	float:left;
+	}
+#table{
+		width: 400px;
+		margin-left: 30px;
+		border: solid 1px #333;
+		border-collapse: collapse;
+		}
+	th{
+		width: 160px;
+		border-bottom: dotted 1px #333;
+		border-right: solid 1px #333;
+		padding: 5px;
+		background: #ccc;
+		}
+	td{
+		width: 240px;
+		border-bottom: dotted 1px #333;
+		padding: 5px;
+		}	
+/*----------------------
+サブコンテンツ
+----------------------*/
+#sub_cont{
+                text-align: center;
+		width: 270px;
+		height: 240px;
+		float:left;
+		padding: 10px 10px 10px 16px;
+               
+}
+#sub_cont p{
+		margin :5px;
+}
+		
+/*----------------------
+ヘッダー
+----------------------*/
+#footer{
+		width: 900px;
+		height: 50px;
+		clear: both;
+		background: black;
+		color: #fff;
+		text-align: center;
+		font-size: 12px;
+		padding-top: 16px;
+		border-top: solid 1px red;
+}

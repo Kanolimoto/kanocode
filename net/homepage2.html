@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>saitama</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            /*カレンダー*/
+            * {box-sizing:border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana,sans-serif;}
+
+.month {
+    padding: 25px 10px;
+    width: 100%;
+    background: #333;
+}
+
+.month ul {
+    margin: 0;
+    padding: 0;
+}
+
+.month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.month .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+.month .next {
+    float: right;
+    padding-top: 10px;
+}
+
+.weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 13.0%;
+    color: #666;
+    text-align: center;
+}
+
+.days {
+    padding: 10px 5px;
+    background: #eee;
+    margin: 0;
+}
+
+.days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.0%;
+    text-align: center;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    font-size:12px;
+    color: #777;
+}
+
+.days li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+    .weekdays li, .days li {width: 12.5%;}
+    .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+    .weekdays li, .days li {width: 12.2%;}
+}
+     /*カレンダー*/       
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            /*--------------------按钮栏设置--------------------------*/
+            .button {
+                background-color: #4CAF50; /* Green */
+                border: 1px solid green;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                cursor: pointer;
+
+                width: 100%;
+                height: auto;
+
+            }
+
+            .button:hover {
+                background-color: #3e8e41;
+            }
+            /*----------------------------------------*/   
+
+            .content{
+                padding: 20px;
+                background-color: white;
+                height: auto;
+
+            }
+            .content img{
+                margin: 25px;
+                width: 200px;
+                height: 200px;
+                border: 5px solid #ddd;
+                border-radius: 4px;
+                padding: 5px;
+
+            }
+            .content p{
+                font-size: 25px;
+            }
+            .content h1{
+                font-size: 50px;
+            }
+            .content1 img{
+                margin: 25px;
+                width: 400px;
+                height: 400px;
+                border: 5px solid #ddd;
+                border-radius: 4px;
+                padding: 5px;
+
+            }
+            a{
+                text-decoration: none;
+            }
+            * {
+                box-sizing: border-box;
+            }
+
+            /* body 样式 */
+            body {
+                font-family: Arial;
+                margin: 0;
+            }
+
+            /* 标题 */
+            .header {
+                padding: 80px;
+                text-align: center;
+                background: #1abc9c;
+                background-image: url('fengling1.jpg');
+                background-size: 100%;
+                color: white;
+            }
+
+            /* 标题字体加大 */
+            .header h1 {
+                font-size: 40px;
+            }
+
+            /* 导航 */
+            .navbar {
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            /* 导航栏样式 */
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 20px;
+                text-decoration: none;
+            }
+
+            /* 右侧链接*/
+            .navbar a.right {
+                float: right;
+            }
+            .navbar a.active{
+                color: white;
+                background-color: #4CAF50;
+            }
+            .navbar a.active:hover{
+                background-color: #ccffcc;
+                color:#3366ff;
+            }
+
+            /* 鼠标移动到链接的颜色 */
+            .navbar a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            /* 列容器 */
+            .row {  
+                display: -ms-flexbox; /* IE10 */
+                display: flex;
+                -ms-flex-wrap: wrap; /* IE10 */
+                flex-wrap: wrap;
+            }
+
+
+            /* 创建两个列 */
+            /* 边栏 */
+            .side {
+                -ms-flex: 30%; /* IE10 */
+                flex: 30%;
+                background-color: #cccccc;
+                /*    background-size: 100%;
+                    background-image: url('city.jpg');*/
+                /*padding: 20px;*/
+            }
+            .imgmove{
+                background-size: 100%;
+                color: #ffffff;
+                animation:myfirst 10s linear 3s infinite alternate;
+            }
+            .imgmove1{
+                background-size: 100%;
+                color: #ffffff;
+                animation:myfirst1 10s linear 3s infinite alternate;
+            }
+
+            /* 主要的内容区域 */
+            .main {   
+                -ms-flex: 70%; /* IE10 */
+                flex: 70%;
+                background-color: white;
+                padding: 0px;
+            }
+
+            /* 测试图片 */
+            .fakeimg {
+                z-index: -1;
+                background-color: #aaa;
+                width: 100%;
+                padding: 20px;
+                background-size: 100%;
+
+            }
+            .fakeimg:hover{
+                opacity: 0.7;
+            }
+            .fakeimg h1{
+                text-align: center;
+                font-size: 50px;
+                color: white;
+            }
+
+            /* 底部 */
+            .footer {
+                padding: 20px;
+                text-align: center;
+                background: #333;
+            }
+            .hehe{
+                display: none;
+            }
+
+            /* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
+            @media screen and (max-width: 700px) {
+                .row {   
+                    flex-direction: column;
+                }
+            }
+
+            /* 响应式布局 - 在屏幕设备宽度尺寸小于 400px 时, 让导航栏目上下堆叠显示 */
+            @media screen and (max-width: 400px) {
+                .navbar a {
+                    float: none;
+                    width: 100%;
+                }
+            }
+            /*图片里的内容 我还不知道装啥*/
+            .qiyu,.qiyu1,.qiyu2{
+                display: none;
+
+            }
+
+            .qiyuturn,.qiyuturn1,.qiyuturn2{
+                position: relative;
+                opacity: 1.0;
+                color:#000000;
+                animation: ff 1s;
+            }
+            .video{
+                width: 400px;
+                height: 400px;
+                background-size: 100%;
+            }
+            .changeimg{
+                border: 5px solid #ddd;
+                border-radius: 4px;
+                padding: 5px;
+                transition: 0.3s;
+                width: 400px;
+                height: 300px;
+                background-size: 100%;
+                /*background-color: black;*/
+                animation: changeimgs 10s;
+                animation-iteration-count:  infinite;
+            }
+            @keyframes changeimgs
+            {
+                0%   {background-image:url('wanju.jpg');}
+                100%   {background-image:url('jianzhu.jpg');}
+                /*        50%   {background-img:url('');}
+                        70%   {background-img:url('');}
+                        90%   {background-img:url('');}
+                        100%   {background-img:url('');}*/
+            }
+            @keyframes ff
+            {
+                0%   {margin-top:-50px;}
+                25%   {margin-top:20px;}
+                100% {margin-top:0px;}
+            }
+            @keyframes myfirst
+            {
+                0%   {background-image:url('fengling.jpg');}
+                50%  {background-image:url('fengling2.jpg');}
+                75%  {background-image:url('fafays1.jpg');}
+                100% {background-image:url('fafays2.jpg');}
+            }
+
+
+
+        </style>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJW4jsPlNKgv6jFm3B5Edp5ywgdqLWdmc&sensor=false">
+        </script>
+
+        <script>
+            function initialize()
+            {
+                var mapProp = {
+                    center: new google.maps.LatLng(51.508742, -0.120850),
+                    zoom: 5,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            }
+
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+        <script>
+         function date(){
+            
+            var date=new Date();
+            
+            
+            var year=date.getFullYear();
+            var y=document.getElementById("year");
+            y.innerHTML=year;
+            
+            
+            var num=date.getDate();
+            
+            
+            
+           var x = document.getElementById(num);
+            x.style.background="#1abc9c";
+            x.style.color="white";
+            
+            
+            
+            
+            var month=date.getMonth();
+            
+            var m=document.getElementById("monthss");
+            var months=["January","February","March","April","May","June","July","August","Septembe","October","November","December"];
+              m.innerHTML=months[month];   
+              
+              if((month+1)===10){
+           document.getElementById("01").style.display="none";
+          document.getElementById("02").style.display="none";
+           document.getElementById("03").style.display="none";
+           document.getElementById("04").style.display="none";
+           document.getElementById("05").style.display="none";
+           document.getElementById("06").style.display="none";
+           
+                
+            }
+            else if((month+1)===9){
+            document.getElementById("01").style.display="none";
+          
+              
+           
+            } 
+            else if((month+1)===11){
+            document.getElementById("01").style.display="none";
+          document.getElementById("02").style.display="none";
+           document.getElementById("03").style.display="none";
+            } 
+             else if((month+1)===12){
+           document.getElementById("01").style.display="none";
+            } 
+             
+           
+         }
+            /*点击图片出现内容 何元庆所有*/
+            function  change() {
+                var z = document.getElementById("he");
+
+                if (z.classList.contains("qiyu")) {
+                    z.classList.remove("qiyu");
+                    z.classList.add("qiyuturn");
+                } else {
+                    z.classList.add("qiyu");
+                    z.classList.add("qiyuturn");
+                }
+
+
+
+//          document.getElementsByClassName("qiyu").classList.remove("qiyu");
+//          document.getElementsByClassName("qiyu").classList.add("qiyuturn");
+
+
+            }
+            function  change1() {
+                var x = document.getElementById("he1");
+
+                if (x.classList.contains("qiyu1")) {
+                    x.classList.remove("qiyu1");
+                    x.classList.add("qiyuturn1");
+                } else {
+                    x.classList.add("qiyu1");
+                    x.classList.add("qiyuturn1");
+                }
+            }
+            function  change2() {
+                var y = document.getElementById("he2");
+
+                if (y.classList.contains("qiyu2")) {
+                    y.classList.remove("qiyu2");
+                    y.classList.add("qiyuturn2");
+                } else {
+                    y.classList.add("qiyu2");
+                    y.classList.add("qiyuturn2");
+                }
+            }
+        </script>
+    </head>
+    <body onload="date()">
+        <div class="header">
+            <h1>埼玉県へようこそ！</h1>
+            <p>楽しみ</p>
+        </div>
+
+        <div class="navbar">
+            <a class="active" href="#">ホームページ</a>
+            <a href="shiwu(food).html">美食</a>
+            <a href="the city(chengshi).html">旅行</a>
+            <a href="img.html">写真</a>
+            <a href="tekami.html" class="right">手紙</a>
+        </div>
+
+        <div class="row">
+            <div class="side">
+
+                <div class="imgmove" style=" background-color:  #ccffcc; width: 100%; height: 300px;"></div>
+                <div style=" width: 100%; height: 300px;">
+                    <!--カレンダーです！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！-->      
+                    <div class="month">      
+                        <ul>
+                            <li class="prev">❮</li>
+                            <li class="next">❯</li>
+                            <li style="text-align:center">
+                                <a id="monthss"></a><br>
+                                <span style="font-size:18px"><a id="year">0</a></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="weekdays">
+                        <li>Mo</li>
+                        <li>Tu</li>
+                        <li>We</li>
+                        <li>Th</li>
+                        <li>Fr</li>
+                        <li>Sa</li>
+                        <li>Su</li>
+                    </ul>
+
+                    <ul  id="da" class="days"> 
+                        <li id="01" ></li>
+                        <li id="02" ></li>
+                        <li id="03" ></li>
+                        <li id="04" ></li>
+                        <li id="05" ></li>
+                        <li id="06" ></li>
+                        <li id="07" ></li>
+                        
+                        
+                        
+                       
+                        <li id="1">1</li>
+                        <li id="2">2</li>
+                        <li id="3">3</li>
+                        <li id="4">4</li>
+                        <li id="5">5</li>
+                        <li id="6">6</li>
+                        <li id="7">7</li>
+                        <li id="8">8</li>
+                        <li id="9">9</li>
+                        <li id="10">10</li>
+                        <li id="11">11</li>
+                        <li id="12">12</li>
+                        <li id="13">13</li>
+                        <li id="14">14</li>
+                        <li id="15">15</li>
+                        <li id="16">16</li>
+                        <li id="17">17</li>
+                        <li id="18">18</li>
+                        <li id="19">19</li>
+                        <li id="20">20</li>
+                        <li id="21">21</li>
+                        <li id="22">22</li>
+                        <li id="23">23</li>
+                        <li id="24">24</li>
+                        <li id="25">25</li>
+                        <li id="26">26</li>
+                        <li id="27">27</li>
+                        <li id="28">28</li>
+                        <li id="29">29</li>
+                        <li id="30">30</li>
+                        <li id="31">31</li>
+                    </ul></div>
+                <!--カレンダーここまで！！！！！！！！！！！！！！！！！！-->
+                <a onclick="window.alert(new Date())"><div class="fakeimg" style="font-size: 25px; color: white ;height:100px; background-image: url('changchong.jpg')">面白いもの</div></a>
+                <a href="https://www.sisia.or.jp/"><div class="fakeimg" style="font-size: 25px; color:white ; height:100px; background-image: url('cream.jpg')">埼玉県ホームページ</div></a>
+                <a href=""><div class="fakeimg" style="font-size: 25px;color:white ; height:100px; background-image: url('wanju.jpg')">楽しみ</div></a>
+            </div>
+            <div class="main">
+                <!--      <h2>埼玉県</h2>
+                      <h5>埼玉県について</h5>-->
+                <a onclick="change()" href="javascript:void(0);"><div class="fakeimg" style="height:200px; background-image:url('biaoti1.jpg') "><h1 style=" font-size: 20px;"></h1></div></a>
+                <div class="qiyu content" id="he"> <h1 style=" border-bottom-style:  dotted">埼玉県印象</h1><p>埼玉県は東西約103km、南北約52kmと東西方向に長い形だ。そんなに広くないけど、人口密度と財政力指数高いだよ。
+
+                        しかも花火大会みたいなイベントと有名な観光地も多い、綺麗な自然と賑やかな町、完璧で融合して、素晴らしいところだ！
+
+                    </p>
+                    <p></p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d32829.32383878645!2d139.6292398775255!3d35.857919810255034!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-CN!2sjp!4v1569385719846!5m2!1szh-CN!2sjp" width="100%" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                    <br></div>
+                <!--      <h2>美食</h2>
+                      <h5>食べった美味しい食べ物を紹介したい</h5>-->
+                <a onclick="change1()" href="javascript:void(0);"><div class="fakeimg" style="height:200px; background-image:url('fenglingcj.jpg') "><h1>美食</h1></div></a>
+                <div class="qiyu1 content" id="he1"> <h1 style=" border-bottom-style:  dotted">美味しい！</h1>
+                    <p>埼玉県の深谷ネキはとても有名だ、生産量は全国1位だよ。もちろんネギ料理もいっぱいあるよ、例えばねぎ味噌せんべい、アマゾン買って食べたことある、とても美味しかった！
+
+                        そして、美食というと、やっぱり川越のお菓子だ！すっごく美味しかったわよ！</p>
+
+                    <img src="wanzi1.jpg"> <img src="cream.jpg"> <img src="guozi.jpg"> <img src="kaorou.jpg">
+                    <br><a href="shiwu(food).html" class="button" >詳しくはこちらに押してください</a></div><!--
+                    <h2>風景</h2>
+                    <h5>遊んだり、歩いた街や公園を</h5>-->
+                <a onclick="change2()" href="javascript:void(0);" ><div class="fakeimg" style="height:200px; background-image: url('yinghuacj.jpg')"><h1>旅行</h1></div></a> 
+                <div class="qiyu2 content" id="he2"><h1 style=" border-bottom-style:  dotted">美しい自然！</h1>
+                    <p>埼玉県の交通はとても便利だ、大宮から新幹線でどこでも行ける、その上で自然の景色も美しい。まるで繫忙な世の中にある、夢の王国みたい。
+
+                        この町は、生き生きとしている、人達に元気になる。もし急ぎすぎた時に、優しくて、人達の忙しい歩みを遅くさせた。
+
+                        自分の美しさを人達に見せる、若い人の文句をよく聞く。この町は優しい上長みたいだ。</p>
+                    <img src="fafa.jpg"> <img src="jianzhu.jpg"> <img src="shizi.jpg"> <img src="jiedao2.jpg">
+                    <a href="the city(chengshi).html" class="button" >詳しくはこちらに押してください</a>
+
+                </div>
+
+                <a  href="tekami.html" ><div class="fakeimg" style="height:200px; background-image: url('c1_1.jpg')"><h1 style=" color: black;">手紙</h1></div></a> 
+
+            </div>
+        </div>
+
+        <div class="footer">
+            
+            <p> Copyright © Saitama Information Service Industry Association. All Rights Reserved.<p><br>
+            <p>制作：何元慶 英雪嬌 都雲鵬  </p>
+        </div>
+    </body>
+</html>
